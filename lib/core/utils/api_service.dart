@@ -53,6 +53,7 @@ class ApiService {
   }
 
   Future<Map<String, dynamic>> get({required String endPoint}) async {
+    await Future.delayed(const Duration(seconds: 4));
     var response = await _dio.get(
       '$_baseUrl$endPoint',
       options: Options(
