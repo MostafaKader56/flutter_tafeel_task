@@ -9,6 +9,7 @@ import '../../../../../core/utils/size_config.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/model/user_details.dart';
 import '../../manager/get_user_details_cubit/get_user_details_cubit.dart';
+import 'loading_user_details_shimmer.dart';
 
 class UserDetailsViewBody extends StatelessWidget {
   const UserDetailsViewBody({super.key, required this.userId});
@@ -19,7 +20,7 @@ class UserDetailsViewBody extends StatelessWidget {
     return BlocBuilder<GetUserDetailsCubit, GetUserDetailsState>(
       builder: (context, state) {
         if (state is GetUserDetailsLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return LoadingUserDetailsShimmer();
         } else if (state is GetUserDetailsFailure) {
           return _buildErrorWidget(state.exception, context, state.exception);
         } else if (state is GetUserDetailsSuccess) {
