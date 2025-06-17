@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import '../../../../../core/error_handle/app_exception.dart';
+import '../../../../../core/error_handle/ui_error_handler.dart';
 import '../../../../../core/utils/app_router.dart';
 import '../../../data/model/user.dart';
 import '../../../../../core/utils/size_config.dart';
@@ -176,7 +178,10 @@ class _UsersTapViewState extends State<UsersTapView> {
     );
   }
 
-  Widget _buildErrorWidget(Exception exception, {required bool isFirstPage}) {
+  Widget _buildErrorWidget(
+    AppException exception, {
+    required bool isFirstPage,
+  }) {
     if (isFirstPage) {
       return Center(
         child: Column(
@@ -194,7 +199,7 @@ class _UsersTapViewState extends State<UsersTapView> {
             ),
             SizedBox(height: SizeConfig.defaultSize!),
             Text(
-              exception.toString(),
+              UIErrorHandler.getLocalizedMessage(exception, context),
               style: Theme.of(context).textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
