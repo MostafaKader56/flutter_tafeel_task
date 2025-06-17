@@ -55,7 +55,9 @@ class ApiService {
   Future<Map<String, dynamic>> get({required String endPoint}) async {
     var response = await _dio.get(
       '$_baseUrl$endPoint',
-      options: Options(headers: {'Accept': 'application/json'}),
+      options: Options(
+        headers: {'Accept': 'application/json', 'x-api-key': 'reqres-free-v1'},
+      ),
     );
     return response.data;
   }
@@ -67,7 +69,9 @@ class ApiService {
     var response = await _dio.post(
       '$_baseUrl$endPoint',
       data: params,
-      options: Options(headers: {'Accept': 'application/json'}),
+      options: Options(
+        headers: {'Accept': 'application/json', 'x-api-key': 'reqres-free-v1'},
+      ),
     );
     return response.data;
   }
@@ -79,7 +83,9 @@ class ApiService {
     var response = await _dio.put(
       '$_baseUrl$endPoint',
       data: params,
-      options: Options(headers: {'Accept': 'application/json'}),
+      options: Options(
+        headers: {'Accept': 'application/json', 'x-api-key': 'reqres-free-v1'},
+      ),
     );
     return response.data;
   }
@@ -91,7 +97,9 @@ class ApiService {
     var response = await _dio.delete(
       '$_baseUrl$endPoint',
       data: params,
-      options: Options(headers: {'Accept': 'application/json'}),
+      options: Options(
+        headers: {'Accept': 'application/json', 'x-api-key': 'reqres-free-v1'},
+      ),
     );
     return response.data;
   }
